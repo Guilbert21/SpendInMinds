@@ -1,11 +1,11 @@
+// app.jsx
 import { useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import './signUp'; 
+import SignUp from './signUp'; // Correct import
 
 function App() {
     return (
         <>
-            <signUp />
+            <SignUp />
         </>
     );
 }
