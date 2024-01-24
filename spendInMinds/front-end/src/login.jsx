@@ -1,17 +1,11 @@
-import { useState } from 'react';
-import './signUp.css';
+import React from "react";
+import "./signUp.css"
 
-function SignUp() {
+function Login() {
     return (
         <div className="form-container">
-            <p className="title">Sign Up</p>
+            <p className="title">Log In</p>
             <form className="form">
-                <div className="input-group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" 
-                    name="name" id="name" 
-                    placeholder="Enter your name" />
-                </div>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" 
@@ -22,17 +16,18 @@ function SignUp() {
                     <label htmlFor="password">Password</label>
                     <input type="password" 
                     name="password" id="password" 
-                    placeholder="Choose a password" />
+                    placeholder="Enter your password" />
                     <div className="forgot">
+                        <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                     </div>
                 </div>
-                <button className="sign">Register</button>
+                <button className="sign">Log In</button>
             </form>
-            <p className="signup">Already have an account?
-                <a rel="noopener noreferrer" href="#" className=""> Log In</a>
+            <p className="signup">Don't have an account?
+                <a rel="noopener noreferrer" href="#" className=""> Sign Up</a>
             </p>
         </div>
     );
-}
+    }
 
-export default SignUp;
+    export default Login;
