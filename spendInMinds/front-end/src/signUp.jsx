@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './signUp.css';
+import { Link } from 'react-router-dom';
 
 function SignUp() {
     return (
@@ -29,7 +30,9 @@ function SignUp() {
                 <button className="sign">Register</button>
             </form>
             <p className="signup">Already have an account?
-                <a rel="noopener noreferrer" href="#" className=""> Log In</a>
+                <a rel="noopener noreferrer" href="#" className="">
+                    <Link to="/login">Log In</Link>
+                </a>
             </p>
         </div>
     );
