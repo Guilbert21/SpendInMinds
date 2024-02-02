@@ -53,6 +53,7 @@
 
 const e = require('express');
 const c = require('cors');
+const db = require('./db/db');
 
 require('dotenv').config();
 
@@ -65,6 +66,7 @@ app.use(e.json());
 app.use(c());
 
 const server = () => {
+    db()
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}...`);
     });
