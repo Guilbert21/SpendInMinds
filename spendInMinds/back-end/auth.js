@@ -54,6 +54,7 @@
 const e = require('express');
 const c = require('cors');
 const db = require('./db/db');
+const {readdirSync} = require('fs');
 
 require('dotenv').config();
 
@@ -64,6 +65,10 @@ const PORT = process.env.PORT
 // Middleware
 app.use(e.json());
 app.use(c());
+
+// Routes
+readdirSync('./routes').map((routes) => app.use('/api/v1', require(`./routes/${routes}`)));
+
 
 const server = () => {
     db()
