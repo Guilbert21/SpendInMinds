@@ -1,65 +1,23 @@
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const spendInMindsModel = require('./models/spendInMinds.js');
+// const e = require('express');
+// const m = require('mongoose');
+// const c = require('cors');
+// const b = require('bcrypt');
+// const s = 10;
 
-// const app = express();
-// app.use(express.json());
-// app.use(cors());
+// const mModel = require('./models/spendInMInds.js');
 
-// mongoose.connect("mongodb://127.0.0.1:27017/spenInMinds");
+// const a = e();
+// a.use(e.json());
+// a.use(c());
 
-// app.post("/login", (req, res) => {
-//     const { email, password } = req.body;
-//     spendInMindsModel.findOne({ email: email })
-//         .then(user => {
-//             if (user) {
-//                 if (user.password === password) {
-//                     res.json("Success");
-//                 } else {
-//                     res.json("Wrong Password");
-//                 }
-//             } else {
-//                 res.json("User not found");
-//             }
-//         })
-// });
+// m.connect("mongodb://127.0.0.1:27017/spenInMinds");
 
-// app.post('/register', (req, res) => {
-//     spendInMindsModel.create(req.body)
-//         .then(usersSignUp => res.json(usersSignUp))
-//         .catch(err => {
-//             console.error(err);
-//             res.status(500).json({ error: "Internal Server Error" });
-//         });
-// });
-
-// const PORT = 3001;
-
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}...`);
-// });
-
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const bcrypt = require('bcrypt');
-// const saltRounds = 10;
-
-// const spendInMindsModel = require('./models/spendInMInds.js');
-
-// const app = express();
-// app.use(express.json());
-// app.use(cors());
-
-// mongoose.connect("mongodb://127.0.0.1:27017/spenInMinds");
-
-// app.post("/login", async (req, res) => {
+// a.post("/login", async (req, res) => {
 //     const { email, password } = req.body;
 //     try {
-//         const user = await spendInMindsModel.findOne({ email: email });
+//         const user = await mModel.findOne({ email });
 //         if (user) {
-//             const passwordMatch = await bcrypt.compare(password, user.password);
+//             const passwordMatch = await b.compare(password, user.password);
 //             if (passwordMatch) {
 //                 res.json("Success");
 //             } else {
@@ -74,11 +32,11 @@
 //     }
 // });
 
-// app.post('/register', async (req, res) => {
+// a.post('/register', async (req, res) => {
 //     try {
-//         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+//         const hashedPassword = await b.hash(req.body.password, s);
 //         req.body.password = hashedPassword;
-//         const usersSignUp = await spendInMindsModel.create(req.body);
+//         const usersSignUp = await mModel.create(req.body);
 //         res.json(usersSignUp);
 //     } catch (err) {
 //         console.error(err);
@@ -88,59 +46,28 @@
 
 // const PORT = 3001;
 
-// app.listen(PORT, () => {
+// a.listen(PORT, () => {
 //     console.log(`Server is running on port ${PORT}...`);
 // });
 
+
 const e = require('express');
-const m = require('mongoose');
 const c = require('cors');
-const b = require('bcrypt');
-const s = 10;
 
-const mModel = require('./models/spendInMInds.js');
+require('dotenv').config();
 
-const a = e();
-a.use(e.json());
-a.use(c());
+const app = e();
 
-m.connect("mongodb://127.0.0.1:27017/spenInMinds");
+const PORT = process.env.PORT 
 
-a.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    try {
-        const user = await mModel.findOne({ email });
-        if (user) {
-            const passwordMatch = await b.compare(password, user.password);
-            if (passwordMatch) {
-                res.json("Success");
-            } else {
-                res.json("Wrong Password");
-            }
-        } else {
-            res.json("User not found");
-        }
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-});
+// Middleware
+app.use(e.json());
+app.use(c());
 
-a.post('/register', async (req, res) => {
-    try {
-        const hashedPassword = await b.hash(req.body.password, s);
-        req.body.password = hashedPassword;
-        const usersSignUp = await mModel.create(req.body);
-        res.json(usersSignUp);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-});
+const server = () => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}...`);
+    });
+}
 
-const PORT = 3001;
-
-a.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}...`);
-});
-
+server();
