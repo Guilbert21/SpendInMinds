@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';  // Make sure to import axios
-
+import axios from 'axios'; 
 import "./signUp.css";
+import "./home" 
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -13,12 +13,16 @@ function Login() {
         e.preventDefault();
         axios.post('http://localhost:3001/login', { email, password })
             .then(result => {
-                console.log(result);
-                if (result.data === "Sucess"){
-                navigate('/home');
+                console.log('Server response:', result.data); 
+
+                if (result.data === "Success") {
+                    console.log('Login successful! Navigating to /home...');
+                    navigate('/home');
+                } else {
+                    console.log('Login failed. Handle the error accordingly.');
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log('Error:', err));
     };
 
     return (

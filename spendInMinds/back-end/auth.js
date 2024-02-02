@@ -40,26 +40,78 @@
 //     console.log(`Server is running on port ${PORT}...`);
 // });
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const bcrypt = require('bcrypt');
+// const saltRounds = 10;
 
-const spendInMindsModel = require('./models/spendInMInds.js');
+// const spendInMindsModel = require('./models/spendInMInds.js');
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+// const app = express();
+// app.use(express.json());
+// app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1:27017/spenInMinds");
+// mongoose.connect("mongodb://127.0.0.1:27017/spenInMinds");
 
-app.post("/login", async (req, res) => {
+// app.post("/login", async (req, res) => {
+//     const { email, password } = req.body;
+//     try {
+//         const user = await spendInMindsModel.findOne({ email: email });
+//         if (user) {
+//             const passwordMatch = await bcrypt.compare(password, user.password);
+//             if (passwordMatch) {
+//                 res.json("Success");
+//             } else {
+//                 res.json("Wrong Password");
+//             }
+//         } else {
+//             res.json("User not found");
+//         }
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ error: "Internal Server Error" });
+//     }
+// });
+
+// app.post('/register', async (req, res) => {
+//     try {
+//         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+//         req.body.password = hashedPassword;
+//         const usersSignUp = await spendInMindsModel.create(req.body);
+//         res.json(usersSignUp);
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ error: "Internal Server Error" });
+//     }
+// });
+
+// const PORT = 3001;
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}...`);
+// });
+
+const e = require('express');
+const m = require('mongoose');
+const c = require('cors');
+const b = require('bcrypt');
+const s = 10;
+
+const mModel = require('./models/spendInMInds.js');
+
+const a = e();
+a.use(e.json());
+a.use(c());
+
+m.connect("mongodb://127.0.0.1:27017/spenInMinds");
+
+a.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await spendInMindsModel.findOne({ email: email });
+        const user = await mModel.findOne({ email });
         if (user) {
-            const passwordMatch = await bcrypt.compare(password, user.password);
+            const passwordMatch = await b.compare(password, user.password);
             if (passwordMatch) {
                 res.json("Success");
             } else {
@@ -74,11 +126,11 @@ app.post("/login", async (req, res) => {
     }
 });
 
-app.post('/register', async (req, res) => {
+a.post('/register', async (req, res) => {
     try {
-        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+        const hashedPassword = await b.hash(req.body.password, s);
         req.body.password = hashedPassword;
-        const usersSignUp = await spendInMindsModel.create(req.body);
+        const usersSignUp = await mModel.create(req.body);
         res.json(usersSignUp);
     } catch (err) {
         console.error(err);
@@ -88,6 +140,7 @@ app.post('/register', async (req, res) => {
 
 const PORT = 3001;
 
-app.listen(PORT, () => {
+a.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);
 });
+
