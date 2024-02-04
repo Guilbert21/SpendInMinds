@@ -1,10 +1,10 @@
-const IncomeSchema = require("../models/IncomeModel")
-
-//add income
-exports.addIncome = async (req, res) => {
+const ExpenseSchema = require("../models/ExpenseModel")
+//TODO: FIND OUT HOW TO USE THE EXPENSE MODEL
+//add Expense
+exports.addExpense = async (req, res) => {
     const {title, amount, category, description, date} = req.body
 
-    const income  = IncomeSchema({
+    const expense  = ExpenseSchema({
         title,
         amount,
         category,
@@ -20,31 +20,31 @@ exports.addIncome = async (req, res) => {
         if(amount <= 0 || !amount === 'number'){
             return res.status(400).json({message: "Amount must be a number and greater than 0"})
         }
-        await income.save()
-        res.status(200).json({message: "Income added successfully"})
+        await expense.save()
+        res.status(200).json({message: "Expense added successfully"})
     } catch (error) {
         res.status(500).json({message: "Server Error"})
     }
 
-    console.log(income)
+    console.log(expense)
 }
 
-//get income
-exports.getIncome = async (req, res) => {
+//get expense
+exports.getExpense = async (req, res) => {
     try {
-        const incomes = await IncomeSchema.find().sort({createdAt: -1})
-        res.status(200).json(incomes)
+        const expenses = await ExpenseSchema.find().sort({createdAt: -1})
+        res.status(200).json(expenses)
     } catch (error) {
         res.status(500).json({message: "Server Error"})
     }
 }
 
-//delete income
-exports.deleteIncome = async (req, res) => {
+//delete expense
+exports.deleteExpense = async (req, res) => {
     const {id} = req.params;
-    IncomeSchema.findByIdAndDelete(id)
-        .then((income) =>{
-            res.status(200).json({message: 'Income Deleted Successfully'})
+    ExpenseSchema.findByIdAndDelete(id)
+        .then((expense) =>{
+            res.status(200).json({message: 'Expense Deleted Successfully'})
         })
         .catch((error) => {
             res.status(500).json({message: "Server Error"})
