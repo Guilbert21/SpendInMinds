@@ -8,7 +8,7 @@ import Dashboard from './component/Dashboard/Dashboard';
 import Income from './component/Income/Income';
 import Expense from './component/Expense/Expense';
 import { dashboard } from './utils/Icons';
-// import { useGlobalContext } from './context/globalContext';
+import { useGlobalContext } from './context/globalContext';
 
 function App() {
   const [active, setActive] = useState(1);
@@ -34,8 +34,8 @@ function App() {
     return <Orb />;
   }, []);
 
-  // const global = useGlobalContext()
-  // console.log(global);
+  const global = useGlobalContext()
+  console.log(global);
 
   return (
     <AppStyled className="App">
