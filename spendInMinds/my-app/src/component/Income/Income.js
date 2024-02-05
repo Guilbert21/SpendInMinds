@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import IncomeItem from '../IncomeItem/IncomeItem';
 
 function Income() {
-    const {addIncome, incomes, getIncomes, deleteIncome} = useGlobalContext()
+    const {addIncome, incomes, getIncomes, deleteIncome, totalIncome} = useGlobalContext()
 
     useEffect(() => {
         getIncomes()
@@ -17,6 +17,9 @@ function Income() {
       <IncomeStyled>
         <InnerLayout>
           <h1>Incomes</h1>
+          <h2 className='total-income'>Total Income: <span>
+            Rs{totalIncome()}</span>
+            </h2>
           <div className='income-content'>
             <div className='form-container'>
                 <Form/>
