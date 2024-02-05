@@ -6,7 +6,7 @@ import Orb from './component/orb/Orb';
 import Navigation from './component/Navigation/Navigation';
 import Dashboard from './component/Dashboard/Dashboard';
 import Income from './component/Income/Income';
-import Expense from './component/Expense/Expense';
+import Expense from './component/Expense/Expenses';
 import { dashboard } from './utils/Icons';
 import { useGlobalContext } from './context/globalContext';
 
