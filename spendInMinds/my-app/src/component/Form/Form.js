@@ -20,6 +20,7 @@ function Form() {
     const { title, amount, date, category,description } = inputState;
 
     const handleInput = name => e => {
+        console.log(e.target.value)
         setInputState({...inputState, [name]: e.target.value})
         // setError('')
     }
