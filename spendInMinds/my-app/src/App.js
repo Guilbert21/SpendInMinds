@@ -1,15 +1,23 @@
 import styled from 'styled-components';
+import React, { useState } from 'react';
 // import bg from "./img/bg.jpg";
 import { MainLayout } from './styles/Layout';
 import Orb from './component/orb/Orb';
+import Navigation from './component/Navigation/Navigation';
+// import { useGlobalContext } from './context/globalContext';
 
 function App() {
+
+  const [active, setActive] = useState(1)
+
+  // const global = useGlobalContext()
+  // console.log(global);
 
   return (
     <AppStyled className="App">
       <Orb />
       <MainLayout>
-
+      <Navigation active={active} setActive={setActive}/>
       </MainLayout>
     </AppStyled>
   );

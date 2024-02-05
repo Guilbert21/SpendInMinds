@@ -25,4 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         overflow: hidden;
         color: rgba(34, 34, 96, .6);
     }
+
+    
+
     `;
