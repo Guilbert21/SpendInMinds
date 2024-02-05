@@ -5,6 +5,9 @@ import { MainLayout } from './styles/Layout';
 import Orb from './component/orb/Orb';
 import Navigation from './component/Navigation/Navigation';
 import Dashboard from './component/Dashboard/Dashboard';
+import Income from './component/Income/Income';
+import Expense from './component/Expense/Expense';
+import { dashboard } from './utils/Icons';
 // import { useGlobalContext } from './context/globalContext';
 
 function App() {
@@ -14,6 +17,16 @@ function App() {
     switch (active) {
       case 1:
         return <Dashboard/>;
+      case 2:
+        return <Dashboard/>;
+      case 3:
+        return <Income/>;
+        case 4:
+        return <Expense/>
+      default: 
+        return <Dashboard/>;
+
+
     }
   };
 
