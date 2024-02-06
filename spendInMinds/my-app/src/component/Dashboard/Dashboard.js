@@ -4,7 +4,7 @@ import { useGlobalContext } from '../../context/globalContext';
 import History from '../../History/History';
 import { InnerLayout } from '../../styles/Layout';
 import {rupee } from '../../utils/Icons';
-// import Chart from '../../Chart/Chart';
+import Chart from '../../Chart/Chart';
 function Dashboard() {
     const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
 
@@ -19,7 +19,7 @@ function Dashboard() {
                 <h1>All Transactions</h1>
                 <div className="stats-con">
                     <div className="chart-con">
-                        {/* <Chart /> */}
+                        <Chart />
                         <div className="amount-con">
                             <div className="income">
                                 <h2>Total Income</h2>
@@ -91,7 +91,7 @@ const DashboardStyled = styled.div`
                     border-radius: 20px;
                     padding: 1rem;
                     p{
-                        font-size: 3.5rem;
+                        font-size: 3.4rem;
                         font-weight: 700;
                     }
                 }
