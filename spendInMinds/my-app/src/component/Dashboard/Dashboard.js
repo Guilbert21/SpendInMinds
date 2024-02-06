@@ -43,7 +43,7 @@ function Dashboard() {
                     </div>
                     <div className="history-con">
                         <History />
-                        <h2 className="salary-title">Min <span>Salary</span>Max</h2>
+                        <h2 className="salary-title">Min <span>Incomes</span>Max</h2>
                         <div className="salary-item">
                             <p>
                                 Rs{Math.min(...incomes.map(item => item.amount))}
@@ -105,7 +105,7 @@ const DashboardStyled = styled.div`
                     p{
                         color: var(--color-green);
                         opacity: 0.6;
-                        font-size: 4.5rem;
+                        font-size: 3rem;
                     }
                 }
             }

@@ -22,7 +22,7 @@ function Form() {
     const handleInput = name => e => {
         console.log(e.target.value)
         setInputState({...inputState, [name]: e.target.value})
-        // setError('')
+        // setError()
     }
 
     const handleSubmit = e => {
