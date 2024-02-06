@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useGlobalContext } from '../context/globalContext';
+import { useGlobalContext } from '../../context/globalContext';
 import History from '../../History/History';
 import { InnerLayout } from '../../styles/Layout';
-import { dollar } from '../../utils/Icons';
-import Chart from '../../Chart/Chart';
+import {rupee } from '../../utils/Icons';
+// import Chart from '../../Chart/Chart';
 function Dashboard() {
     const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
 
@@ -19,24 +19,24 @@ function Dashboard() {
                 <h1>All Transactions</h1>
                 <div className="stats-con">
                     <div className="chart-con">
-                        <Chart />
+                        {/* <Chart /> */}
                         <div className="amount-con">
                             <div className="income">
                                 <h2>Total Income</h2>
                                 <p>
-                                    {dollar} {totalIncome()}
+                                    {rupee} {totalIncome()}
                                 </p>
                             </div>
                             <div className="expense">
                                 <h2>Total Expense</h2>
                                 <p>
-                                    {dollar} {totalExpenses()}
+                                    {rupee} {totalExpenses()}
                                 </p>
                             </div>
                             <div className="balance">
                                 <h2>Total Balance</h2>
                                 <p>
-                                    {dollar} {totalBalance()}
+                                    {rupee} {totalBalance()}
                                 </p>
                             </div>
                         </div>
@@ -46,19 +46,19 @@ function Dashboard() {
                         <h2 className="salary-title">Min <span>Salary</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...incomes.map(item => item.amount))}
+                                Rs{Math.min(...incomes.map(item => item.amount))}
                             </p>
                             <p>
-                                ${Math.max(...incomes.map(item => item.amount))}
+                                Rs{Math.max(...incomes.map(item => item.amount))}
                             </p>
                         </div>
                         <h2 className="salary-title">Min <span>Expense</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...expenses.map(item => item.amount))}
+                                Rs{Math.min(...expenses.map(item => item.amount))}
                             </p>
                             <p>
-                                ${Math.max(...expenses.map(item => item.amount))}
+                                Rs{Math.max(...expenses.map(item => item.amount))}
                             </p>
                         </div>
                     </div>
