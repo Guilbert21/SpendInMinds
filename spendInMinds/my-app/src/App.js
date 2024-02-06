@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React, { useState, useMemo } from 'react';
-// import bg from "./img/bg.jpg";
 import { MainLayout } from './styles/Layout';
 import Orb from './component/orb/Orb';
 import Navigation from './component/Navigation/Navigation';
@@ -9,6 +8,7 @@ import Income from './component/Income/Income';
 import Expense from './component/Expense/Expenses';
 import { dashboard } from './utils/Icons';
 import { useGlobalContext } from './context/globalContext';
+import Expenses from './component/Expense/Expenses';
 
 function App() {
   const [active, setActive] = useState(1);
@@ -22,7 +22,7 @@ function App() {
       case 3:
         return <Income/>;
         case 4:
-        return <Expense/>
+        return <Expenses/>
       default: 
         return <Dashboard/>;
 
