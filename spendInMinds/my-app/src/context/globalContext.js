@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { get, set } from 'mongoose';
 
 const BASE_URL = 'http://localhost:3001/api/v1/';
 
