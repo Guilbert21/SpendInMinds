@@ -48,17 +48,20 @@ export const GlobalProvider = ({ children }) => {
         getExpenses()
     }
 
+    //get display expense
     const getExpenses = async () => {
         const response = await axios.get(`${BASE_URL}get-expense`)
         setExpenses(response.data)
         console.log(response.data)
     }
 
+    //to delete expense
     const deleteExpense = async (id) => {
         const res  = await axios.delete(`${BASE_URL}delete-expense/${id}`)
         getExpenses()
     }
 
+    // to calculate total expenses
     const totalExpenses = () => {
         let totalIncome = 0;
         expenses.forEach((income) =>{
@@ -68,10 +71,12 @@ export const GlobalProvider = ({ children }) => {
         return totalIncome;
     }
     
+    // to calculate total balance
     const totalBalance = () => {
         return totalIncome() - totalExpenses()
     }
 
+    // to display transaction history
     const transactionHistory = () => {
         const history = [...incomes, ...expenses]
         history.sort((a, b) => {
