@@ -35,7 +35,7 @@ function Dashboard() {
                             </div>
                             <div className="balance">
                                 <h2>Total Balance</h2>
-                                <p>
+                                <p style={{ color: totalBalance() < 0 ? 'red' : 'green' }}>
                                     {rupee} {totalBalance()}
                                 </p>
                             </div>
