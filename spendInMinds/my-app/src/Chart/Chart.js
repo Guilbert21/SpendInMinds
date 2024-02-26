@@ -1,5 +1,5 @@
 import React from 'react'
-import {Chart as ChartJs, 
+import { Chart as ChartJs, 
     CategoryScale,
     LinearScale,
     PointElement,
@@ -10,7 +10,7 @@ import {Chart as ChartJs,
     ArcElement,
 } from 'chart.js'
 
-import {Line} from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 import { useGlobalContext } from '../context/globalContext'
 import { dateFormat } from '../utils/dateFormat'
@@ -27,42 +27,29 @@ ChartJs.register(
 )
 
 function Chart() {
-    const {incomes, expenses} = useGlobalContext()
-
+    const { incomes, expenses } = useGlobalContext()
+    const incomeDates = incomes.map(inc => inc.date).sort((a, b) => new Date(a) - new Date(b))
+    const expenseDates = expenses.map(exp => exp.date).sort((a, b) => new Date(a) - new Date(b))
     const data = {
-        labels: incomes.map((inc) =>{
-            const {date} = inc
-            return dateFormat(date)
-        }),
+        labels: [...incomeDates.map(date => dateFormat(date)), ...expenseDates.map(date => dateFormat(date))],
         datasets: [
             {
                 label: 'Income',
-                data: [
-                    ...incomes.map((income) => {
-                        const {amount} = income
-                        return amount
-                    })
-                ],
+                data: incomes.map(income => income.amount),
                 backgroundColor: 'green',
-                tension: .2
+                tension: 0.2
             },
             {
                 label: 'Expenses',
-                data: [
-                    ...expenses.map((expense) => {
-                        const {amount} = expense
-                        return amount
-                    })
-                ],
+                data: expenses.map(expense => expense.amount),
                 backgroundColor: 'red',
-                tension: .2
+                tension: 0.2
             }
         ]
     }
 
-
     return (
-        <ChartStyled >
+        <ChartStyled>
             <Line data={data} />
         </ChartStyled>
     )
