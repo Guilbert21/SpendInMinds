@@ -14,8 +14,9 @@
             type: String,
             required:[tue, 'password is required']
         },
-        {timestamps}
- });
+    },
+        {timestamps: true}
+ );
 
  const userModel = mongoose.model('users', userSchema)
 module.exports = userModel;
