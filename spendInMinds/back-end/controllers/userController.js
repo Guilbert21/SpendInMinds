@@ -5,7 +5,7 @@ const loginController = async(req, res) => {
         const {email, password} = req.body;
         const user = await userModel.findOne({email, password});
         if(!user) {
-            return res.status(401).json(message: 'Invalid email or password');
+            return res.status(404).send('Invalid email or password');
         }
         res.status(200).json({
             sucess: true,
