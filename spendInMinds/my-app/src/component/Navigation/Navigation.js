@@ -4,9 +4,11 @@ import profile from "../../img/photo1.jpg"
 import { menuItems } from '../../utils/menuItems'
 import { signout } from '../../utils/Icons'
 import { useLogout } from '../../hooks/useLogout'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 function Navigation({active, setActive}) {
     const {logout} = useLogout ()
+    const { user } = useAuthContext()
 
     const handleClick = () =>{
         logout()
@@ -16,7 +18,9 @@ function Navigation({active, setActive}) {
         <div className="user-container">
             <img src={profile}/>
             <div className="text">
-                    <h2>Alexis</h2>
+            {user && (
+               <h2>{user.name}</h2>
+                 )}
                     <p>Your Money</p>
                 </div>
         </div>
@@ -32,13 +36,16 @@ function Navigation({active, setActive}) {
                     </li>
                 })}
             </ul>
-            <div classname="bottom-nav">
-                <li>
-                    <button onclick={handleClick}>
-                    {signout}Log Out
-                    </button>
-                </li>
-            </div>
+            <div className="bottom-nav">
+    {user && (
+    <li>
+        <span style={{ color: 'white' }}>{user.email}</span>
+        <button onClick={handleClick}>
+            {signout}Log Out
+        </button>
+    </li>
+    )}
+</div>
 
     </NavStyled>
   )

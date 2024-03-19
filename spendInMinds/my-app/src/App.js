@@ -9,7 +9,7 @@ import Expense from './component/Expense/Expenses';
 import { dashboard } from './utils/Icons';
 import { useGlobalContext } from './context/globalContext';
 import Expenses from './component/Expense/Expenses';
-
+import { AuthContextProvider } from './context/AuthContext';
 function App() {
   const [active, setActive] = useState(1);
 
@@ -41,10 +41,12 @@ function App() {
     <AppStyled className="App">
       {orbMemo}
       <MainLayout>
+        <AuthContextProvider>
         <Navigation active={active} setActive={setActive} />
         <main>
           {displayData()}
         </main>
+        </AuthContextProvider>
       </MainLayout>
     </AppStyled>
   );
