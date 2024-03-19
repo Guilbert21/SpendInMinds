@@ -1,6 +1,10 @@
 const { addExpense, getExpense, deleteExpense } = require('../controllers/expense');
 const { addIncome, getIncome, deleteIncome } = require('../controllers/income');
+const requireAuth = require('../middleware/requireAuth');
 const router = require('express').Router();
+
+//auth for transac
+router.use(requireAuth)
 
 router
         .post('/add-income', addIncome)
