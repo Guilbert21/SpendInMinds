@@ -55,6 +55,7 @@ const e = require('express');
 const c = require('cors');
 const db = require('./db/db');
 const {readdirSync} = require('fs');
+const userRoute = require('./routes/userRoute');
 
 require('dotenv').config();
 
@@ -67,6 +68,7 @@ app.use(e.json());
 app.use(c());
 
 // Routes
+app.use('/api/v1/', userRoute);
 readdirSync('./routes').map((routes) => app.use('/api/v1', require(`./routes/${routes}`)));
 
 
@@ -78,3 +80,4 @@ const server = () => {
 }
 
 server();
+

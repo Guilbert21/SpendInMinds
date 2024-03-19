@@ -1,10 +1,26 @@
+// const express = require('express');
+// const { loginController, registerController } = require('../controllers/userController');
+
+// const router = express.Router();
+
+// router.post('/login', loginController)
+
+// router.post('/register', registerController) 
+
+// module.exports = router;
+
 const express = require('express');
-const { loginController, registerController } = require('../controllers/userController');
+
+//controller functions
+const {loginUser, signupUser} = require('../controllers/userController');
 
 const router = express.Router();
 
-router.post('/login', loginController)
+//login
+router.post('/login', loginUser)
 
-router.post('/register', registerController) 
+//signup
+router.post('/signup', signupUser)
+
 
 module.exports = router;

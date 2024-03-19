@@ -3,8 +3,14 @@ import styled from 'styled-components'
 import profile from "../../img/photo1.jpg"
 import { menuItems } from '../../utils/menuItems'
 import { signout } from '../../utils/Icons'
+import { useLogout } from '../../hooks/useLogout'
 
 function Navigation({active, setActive}) {
+    const {logout} = useLogout ()
+
+    const handleClick = () =>{
+        logout()
+    }
   return (
     <NavStyled>
         <div className="user-container">
@@ -26,11 +32,14 @@ function Navigation({active, setActive}) {
                     </li>
                 })}
             </ul>
-            <div className="bottom-nav">
+            <div classname="bottom-nav">
                 <li>
-                    {signout} Sign Out
+                    <button onclick={handleClick}>
+                    {signout}Log Out
+                    </button>
                 </li>
             </div>
+
     </NavStyled>
   )
 }
